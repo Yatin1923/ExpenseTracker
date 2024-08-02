@@ -8,9 +8,17 @@ import slideImg3 from "../../../images/onboarding/Onboarding-img3.png";
 
 const LoginSignup = () => {
   const [index, setIndex] = useState(0);
+  const [showMain, setShowMain] = useState(false);
   const handleChangeIndex = (index) => {
     setIndex(index);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowMain(true);
+    }, 3000); // Display "Welcome to Our App!" for 5 seconds
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -41,79 +49,129 @@ const LoginSignup = () => {
   return (
     <Container
       maxWidth="xs"
-      sx={{ textAlign: "center", mt: 5, backgroundColor: "#FFF" }}
+      sx={{
+        textAlign: "center",
+        mt: 5,
+        backgroundColor: "#FFF",
+        transition: "opacity 1s",
+      }}
     >
-      <SwipeableViews index={index} onChangeIndex={handleChangeIndex}>
-        {slides.map((slide, i) => (
-          <Box key={i} sx={{ padding: 3 }}>
-            <img
-              src={slide.image}
-              alt={`slide-${i}`}
-              style={{ width: "100%", height: "auto"  , paddingBottom:'7vh'}}
-            />
-            <Typography
-              variant="h5"
-              gutterBottom
-              sx={{ fontSize: "32px", fontWeight: "Bold" }}
-            >
-              {slide.title}
-            </Typography>
-            <Typography variant="body1" sx={{ color: "#91919F" }}>
-              {slide.subtitle}
-            </Typography>
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 , alignItems:'center' }}>
-              {slides.map((_, dotIndex) => (
-                <Box
-                  key={dotIndex}
-                  sx={{
-                    width: dotIndex === index ?  15 : 10,
-                    height: dotIndex === index ?  15 : 10,
-                    borderRadius: "50%",
-                    backgroundColor:
-                      dotIndex === index ? "#7F3DFF" : "grey.400",
-                    mx: 0.5,
-                    transition: "background-color 2s",
+      {showMain ? (
+        <>
+          <SwipeableViews index={index} onChangeIndex={handleChangeIndex}>
+            {slides.map((slide, i) => (
+              <Box key={i} sx={{ padding: 3 }}>
+                <img
+                  src={slide.image}
+                  alt={`slide-${i}`}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    paddingBottom: "7vh",
                   }}
                 />
-              ))}
-            </Box>
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  sx={{ fontSize: "32px", fontWeight: "bold" }}
+                >
+                  {slide.title}
+                </Typography>
+                <Typography variant="body1" sx={{ color: "#91919F" }}>
+                  {slide.subtitle}
+                </Typography>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    mt: 2,
+                    alignItems: "center",
+                  }}
+                >
+                  {slides.map((_, dotIndex) => (
+                    <Box
+                      key={dotIndex}
+                      sx={{
+                        width: dotIndex === index ? 15 : 10,
+                        height: dotIndex === index ? 15 : 10,
+                        borderRadius: "50%",
+                        backgroundColor:
+                          dotIndex === index ? "#7F3DFF" : "grey.400",
+                        mx: 0.5,
+                        transition: "background-color 2s",
+                      }}
+                    />
+                  ))}
+                </Box>
+              </Box>
+            ))}
+          </SwipeableViews>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              width: "85vw",
+              padding: "20px",
+            }}
+          >
+            <Button
+              variant="contained"
+              sx={{
+                mb: 2,
+                background: "#7F3DFF",
+                height: "56px",
+                borderRadius: "16px",
+              }}
+            >
+              Sign Up
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{
+                mb: 2,
+                background: "#EEE5FF",
+                height: "56px",
+                color: "#7F3DFF",
+                border: "1px solid #EEE5FF",
+                borderRadius: "16px",
+              }}
+            >
+              Login
+            </Button>
           </Box>
-        ))}
-      </SwipeableViews>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          width: "85vw",
-          padding: "20px",
-        }}
-      >
-        <Button
-          variant="contained"
+        </>
+      ) : (
+        <Box
           sx={{
-            mb: 2,
-            background: "#7F3DFF",
-            height: "56px",
-            borderRadius: "16px",
-             
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw",
+            backgroundColor: "#7F3DFF",
+            color: "#fff",
+            transition: "opacity 1s",
+            opacity: showMain ? 0 : 1,
           }}
         >
-          Sign Up
-        </Button>
-        <Button
-          variant="outlined"
-          sx={{
-            mb: 2,
-            background: "#EEE5FF",
-            height: "56px",
-            color: "#7F3DFF",
-            border: "1px solid #EEE5FF",
-            borderRadius: "16px",
-          }}
-        >
-          Login
-        </Button>
-      </Box>
+          <Typography sx={{ fontWeight: "bold", fontSize: "56px" }}>
+            m
+            <span
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,192,203,1) 0%, rgba(255,192,203,0.5) 50%, rgba(255,192,203,0) 100%)",
+                borderRadius: "50%",
+                padding: "0 10px",
+                display: "inline-block",
+                lineHeight: "1",
+              }}
+            >
+              o
+            </span>
+            ntra
+          </Typography>
+        </Box>
+      )}
     </Container>
   );
 };
