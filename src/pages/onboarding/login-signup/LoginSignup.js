@@ -61,16 +61,16 @@ const LoginSignup = () => {
             <Typography variant="body1" sx={{ color: "#91919F" }}>
               {slide.subtitle}
             </Typography>
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+            <Box sx={{ display: "flex", justifyContent: "center", mt: 2 , alignItems:'center' }}>
               {slides.map((_, dotIndex) => (
                 <Box
                   key={dotIndex}
                   sx={{
-                    width: 10,
-                    height: 10,
+                    width: dotIndex === index ?  15 : 10,
+                    height: dotIndex === index ?  15 : 10,
                     borderRadius: "50%",
                     backgroundColor:
-                      dotIndex === index ? "primary.main" : "grey.400",
+                      dotIndex === index ? "#7F3DFF" : "grey.400",
                     mx: 0.5,
                     transition: "background-color 0.3s",
                   }}
