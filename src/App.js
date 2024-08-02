@@ -1,9 +1,10 @@
 import './App.css';
+import Onboarding from './pages/onboarding/Onboarding';
 
 function App() {
   return (
     <div className="App">
-     <h1>swapnil</h1>
+     <Onboarding/>
     </div>
   );
 }
