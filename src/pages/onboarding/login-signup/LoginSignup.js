@@ -16,7 +16,7 @@ const LoginSignup = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMain(true);
-    }, 300000); // Display "Welcome to Our App!" for 5 seconds
+    }, 3000); // Display "Welcome to Our App!" for 5 seconds
     return () => clearTimeout(timer);
   }, []);
 
@@ -55,8 +55,8 @@ const LoginSignup = () => {
         backgroundColor: "#FFF", // Ensure background color is white
         transition: "opacity 0.5s ease-in-out",
         opacity: 1, // Fade in/out effect
-        transform: showMain ? "translateY(0)" : "translateY(50px)", // Slide effect
-        transition: "transform 0.5s ease-in-out", // Smooth slide-in
+        transform: showMain ? "translateY(0)" : "translateY(0px)", // Slide effect issue of margin on home page here
+        transition: "transform 0.3s ease-in-out", // Smooth slide-in
         display: "flex",
         flexDirection: "column",
         alignItems: "center", // Center horizontally
