@@ -16,7 +16,7 @@ const LoginSignup = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowMain(true);
-    }, 3000); // Display "Welcome to Our App!" for 5 seconds
+    }, 300000); // Display "Welcome to Our App!" for 5 seconds
     return () => clearTimeout(timer);
   }, []);
 
@@ -48,97 +48,108 @@ const LoginSignup = () => {
 
   return (
     <Container
-      maxWidth="xs"
       sx={{
         textAlign: "center",
-        mt: 5,
-        backgroundColor: "#FFF",
-        transition: "opacity 1s",
+        width: "100vw",
+        height: "100vh",
+        backgroundColor: "#FFF", // Ensure background color is white
+        transition: "opacity 0.5s ease-in-out",
+        opacity: 1, // Fade in/out effect
+        transform: showMain ? "translateY(0)" : "translateY(50px)", // Slide effect
+        transition: "transform 0.5s ease-in-out", // Smooth slide-in
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center", // Center horizontally
+        justifyContent: "center", // Center vertically
+        margin: "0px !important",
+        padding: "0px !important",
       }}
     >
       {showMain ? (
         <>
-          <SwipeableViews index={index} onChangeIndex={handleChangeIndex}>
-            {slides.map((slide, i) => (
-              <Box key={i} sx={{ padding: 3 }}>
-                <img
-                  src={slide.image}
-                  alt={`slide-${i}`}
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    paddingBottom: "7vh",
-                  }}
-                />
-                <Typography
-                  variant="h5"
-                  gutterBottom
-                  sx={{ fontSize: "32px", fontWeight: "bold" }}
-                >
-                  {slide.title}
-                </Typography>
-                <Typography variant="body1" sx={{ color: "#91919F" }}>
-                  {slide.subtitle}
-                </Typography>
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    mt: 2,
-                    alignItems: "center",
-                  }}
-                >
-                  {slides.map((_, dotIndex) => (
-                    <Box
-                      key={dotIndex}
-                      sx={{
-                        width: dotIndex === index ? 15 : 10,
-                        height: dotIndex === index ? 15 : 10,
-                        borderRadius: "50%",
-                        backgroundColor:
-                          dotIndex === index ? "#7F3DFF" : "grey.400",
-                        mx: 0.5,
-                        transition: "background-color 2s",
-                      }}
-                    />
-                  ))}
+          <Container>
+            <SwipeableViews index={index} onChangeIndex={handleChangeIndex}>
+              {slides.map((slide, i) => (
+                <Box key={i} sx={{ padding: 2, mt: 5 }}>
+                  <img
+                    src={slide.image}
+                    alt={`slide-${i}`}
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                      paddingBottom: "5vh",
+                    }}
+                  />
+                  <Typography
+                    variant="h5"
+                    gutterBottom
+                    sx={{ fontSize: "32px", fontWeight: "bold" }}
+                  >
+                    {slide.title}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: "#91919F" }}>
+                    {slide.subtitle}
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      mt: 2,
+                      alignItems: "center",
+                    }}
+                  >
+                    {slides.map((_, dotIndex) => (
+                      <Box
+                        key={dotIndex}
+                        sx={{
+                          width: dotIndex === index ? 15 : 10,
+                          height: dotIndex === index ? 15 : 10,
+                          borderRadius: "50%",
+                          backgroundColor:
+                            dotIndex === index ? "#7F3DFF" : "grey.400",
+                          mx: 0.5,
+                          transition: "background-color 0.5s ease-in-out",
+                        }}
+                      />
+                    ))}
+                  </Box>
                 </Box>
-              </Box>
-            ))}
-          </SwipeableViews>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              width: "85vw",
-              padding: "20px",
-            }}
-          >
-            <Button
-              variant="contained"
+              ))}
+            </SwipeableViews>
+            <Box
               sx={{
-                mb: 2,
-                background: "#7F3DFF",
-                height: "56px",
-                borderRadius: "16px",
+                display: "flex",
+                flexDirection: "column",
+                width: "85vw",
+                padding: "20px",
               }}
             >
-              Sign Up
-            </Button>
-            <Button
-              variant="outlined"
-              sx={{
-                mb: 2,
-                background: "#EEE5FF",
-                height: "56px",
-                color: "#7F3DFF",
-                border: "1px solid #EEE5FF",
-                borderRadius: "16px",
-              }}
-            >
-              Login
-            </Button>
-          </Box>
+              <Button
+                variant="contained"
+                sx={{
+                  mb: 2,
+                  background: "#7F3DFF",
+                  height: "56px",
+                  borderRadius: "16px",
+                }}
+              >
+                Sign Up
+              </Button>
+              <Button
+                variant="outlined"
+                sx={{
+                  mb: 2,
+                  background: "#EEE5FF",
+                  height: "56px",
+                  color: "#7F3DFF",
+                  border: "1px solid #EEE5FF",
+                  borderRadius: "16px",
+                }}
+              >
+                Login
+              </Button>
+            </Box>
+          </Container>
         </>
       ) : (
         <Box
@@ -146,12 +157,14 @@ const LoginSignup = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh",
             width: "100vw",
+            height: "100vh",
             backgroundColor: "#7F3DFF",
             color: "#fff",
-            transition: "opacity 1s",
-            opacity: showMain ? 0 : 1,
+            transition: "opacity 1s ease-in-out",
+            opacity: 1,
+            margin: 0, // Remove default margin
+            padding: 0, // Remove default padding
           }}
         >
           <Typography sx={{ fontWeight: "bold", fontSize: "56px" }}>
