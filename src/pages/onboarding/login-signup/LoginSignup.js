@@ -49,7 +49,7 @@ const LoginSignup = () => {
             <img
               src={slide.image}
               alt={`slide-${i}`}
-              style={{ width: "100%", height: "auto" }}
+              style={{ width: "100%", height: "auto"  , paddingBottom:'7vh'}}
             />
             <Typography
               variant="h5"
@@ -72,7 +72,7 @@ const LoginSignup = () => {
                     backgroundColor:
                       dotIndex === index ? "#7F3DFF" : "grey.400",
                     mx: 0.5,
-                    transition: "background-color 0.3s",
+                    transition: "background-color 2s",
                   }}
                 />
               ))}
