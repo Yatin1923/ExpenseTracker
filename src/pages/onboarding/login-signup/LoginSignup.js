@@ -5,10 +5,13 @@ import slideImg1 from "../../../images/onboarding/Onboarding-img1.png";
 import slideImg2 from "../../../images/onboarding/Onboarding-img2.png";
 
 import slideImg3 from "../../../images/onboarding/Onboarding-img3.png";
+import { useNavigate } from 'react-router-dom';
 
 const LoginSignup = () => {
   const [index, setIndex] = useState(0);
   const [showMain, setShowMain] = useState(false);
+  const navigate = useNavigate();
+
   const handleChangeIndex = (index) => {
     setIndex(index);
   };
@@ -45,6 +48,10 @@ const LoginSignup = () => {
       image: slideImg3,
     },
   ];
+
+  const handleSignUpClick = () => {
+    navigate('/signup');
+  };
 
   return (
     <Container
@@ -132,6 +139,7 @@ const LoginSignup = () => {
                   height: "56px",
                   borderRadius: "16px",
                 }}
+                onClick={handleSignUpClick}
               >
                 Sign Up
               </Button>
