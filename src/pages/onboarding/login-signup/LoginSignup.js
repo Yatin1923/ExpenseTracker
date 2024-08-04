@@ -97,7 +97,11 @@ const LoginSignup = () => {
                   <Typography variant="body1" sx={{ color: "#91919F" }}>
                     {slide.subtitle}
                   </Typography>
-                  <Box
+                  
+                </Box>
+              ))}
+            </SwipeableViews>
+            <Box
                     sx={{
                       display: "flex",
                       justifyContent: "center",
@@ -120,9 +124,6 @@ const LoginSignup = () => {
                       />
                     ))}
                   </Box>
-                </Box>
-              ))}
-            </SwipeableViews>
             <Box
               sx={{
                 display: "flex",
