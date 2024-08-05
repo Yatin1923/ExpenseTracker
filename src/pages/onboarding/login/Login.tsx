@@ -13,7 +13,7 @@ import {
 import { Visibility, VisibilityOff, ArrowBack } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 
-const SignUp = () => {
+const Login = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const navigate = useNavigate();
   const handleClickShowPassword = () => {
@@ -22,9 +22,8 @@ const SignUp = () => {
   const handleBackClick = () => {
     navigate(-1); // This will navigate back to the previous page
   };
-
-  const handleSignup=()=>{
-    navigate("/signup-verification")
+  const handleLoginClick = () =>{
+    navigate('/set-pin');
   }
 
   return (
@@ -65,27 +64,15 @@ const SignUp = () => {
             sx={{
               color: "#212325",
               fontWeight: "bold",
-              fontSize:'20px',
+              fontSize: "20px",
               textAlign: "center",
               flexGrow: 1,
             }}
           >
-            Sign Up
+            Login
           </Typography>
         </Box>
-
-        <TextField
-          fullWidth
-          label="Name"
-          margin="normal"
-          variant="outlined"
-          sx={{
-            "& .MuiOutlinedInput-root": {
-              borderRadius: "20px",
-            },
-          }}
-        />
-
+        <Box sx={{display:'flex' , flexDirection:'column' , gap:1, width:'100%', pb:'2.5rem'}}>
         <TextField
           fullWidth
           label="Email"
@@ -116,7 +103,6 @@ const SignUp = () => {
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                   edge="end"
-                
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
@@ -125,69 +111,50 @@ const SignUp = () => {
           }}
         />
 
-        <FormControlLabel
-          
-          control={<Checkbox name="terms"   sx={{fontSize:'60px !important', color:'#7F3DFF', mb:2}} />}
-          label={
-            <Typography variant="body2" sx={{fontWeight:'bold' , fontSize:'14px', textAlign:'left' , width:'75%', paddingLeft:'5px'}}>
-              By signing up, you agree to the{" "}
-              <Link to="/terms"style={{textDecoration:'none' , color:'#7F3DFF'}}>Terms of Service</Link>
-              <Link to="/privacy" style={{textDecoration:'none' , color:'#7F3DFF'}}>  and{" "} Privacy Policy</Link>
-            </Typography>
-          }
-          sx={{ alignSelf: "start", mb: 3 , mt:1 }}
-        />
+        </Box>
+      
 
         <Button
           variant="contained"
-          
           fullWidth
           sx={{
             mb: 2,
             height: "56px",
             borderRadius: "16px",
             textTransform: "none",
-            fontSize:'18px',
-            fontWeight:'bold',
-            backgroundColor:'#7F3DFF'
+            fontSize: "18px",
+            fontWeight: "bold",
+            backgroundColor: "#7F3DFF",
           }}
-          onClick={handleSignup}
+          onClick={handleLoginClick}
         >
-          Sign Up
+          Login
         </Button>
-
-        <Typography variant="body2" sx={{ mb: 2 , fontSize:'14px',fontWeight:'bold' , color:'#91919F' }}>
-          Or with
+       <Box sx={{display:'flex' , flexDirection:'column', gap:2, pt:'1rem'}}>
+       <Typography variant="body2" sx={{ mb: 2, fontSize: "14px" }}>
+          <Link
+            to="/reset-password"
+            style={{ color: "#7F3DFF", fontWeight: "bold",textDecoration:'none' }}
+          >
+            Forgot Password?
+          </Link>
         </Typography>
 
-        <Button
-          variant="outlined"
-          fullWidth
-          sx={{
-            mb: 2,
-            height: "56px",
-            borderRadius: "16px",
-            borderColor:'#91919F',
-            textTransform: "none",
-            fontWeight:'bold',
-            color:'#212325',
-            fontSize:'18px'
-          }}
+        <Typography
+          variant="body2"
+          sx={{ color: "#91919F", fontWeight: "bold", fontSize: "14px" }}
         >
-          <img
-            src="https://img.icons8.com/color/16/000000/google-logo.png"
-            alt="Google logo"
-            style={{ marginRight: "8px" , height:'25px' , width:'25px'}}
-          />
-          Sign Up with Google
-        </Button>
-
-        <Typography variant="body2" sx={{color:'#91919F', fontWeight:'bold', fontSize:'14px'}}>
-          Already have an account? <Link to="/login"  style={{color:'#7F3DFF', fontWeight:'bold'}}>Login</Link>
+          Don't have an account yet?{" "}
+          <Link to="/signup" style={{ color: "#7F3DFF", fontWeight: "bold" }}>
+            Sign Up
+          </Link>
         </Typography>
+
+       </Box>
+    
       </Box>
     </Container>
   );
 };
 
-export default SignUp;
+export default Login;
