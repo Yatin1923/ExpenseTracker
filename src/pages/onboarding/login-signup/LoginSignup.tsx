@@ -53,7 +53,7 @@ const LoginSignup = () => {
     navigate('/signup');
   };
   const handleLoginClick = () => {
-    navigate('/set-pin');
+    navigate('/login');
   };
 
   return (
