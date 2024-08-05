@@ -52,6 +52,9 @@ const LoginSignup = () => {
   const handleSignUpClick = () => {
     navigate('/signup');
   };
+  const handleLoginClick = () => {
+    navigate('/set-pin');
+  };
 
   return (
     <Container
@@ -153,6 +156,7 @@ const LoginSignup = () => {
                   border: "1px solid #EEE5FF",
                   borderRadius: "16px",
                 }}
+                onClick={handleLoginClick}
               >
                 Login
               </Button>
