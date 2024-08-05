@@ -10,8 +10,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Visibility, VisibilityOff,ArrowBack  } from "@mui/icons-material";
-import { Link , useNavigate } from "react-router-dom";
+import { Visibility, VisibilityOff, ArrowBack } from "@mui/icons-material";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = React.useState(false);
@@ -33,19 +33,65 @@ const SignUp = () => {
           mt: 5,
         }}
       >
-        <Box sx={{display:'flex',alignItems:'center',width:'100%',color:'#212325', fontWeight:'bold',mb:6 , position:'relative'}}>
-        <IconButton onClick={handleBackClick} sx={{ color:'#212325', fontWeight:'bold',position:'absolute' , left:0}}>
-          <ArrowBack />
-        </IconButton>
-        <Typography variant="h5" component="h1" sx={{ color:'#212325', fontWeight:'bold', textAlign:'center' , flexGrow:1}}>
-          Sign Up
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            color: "#212325",
+            fontWeight: "bold",
+            mb: 6,
+            position: "relative",
+          }}
+        >
+          <IconButton
+            onClick={handleBackClick}
+            sx={{
+              color: "#212325",
+              fontWeight: "bold",
+              position: "absolute",
+              left: 0,
+            }}
+          >
+            <ArrowBack />
+          </IconButton>
+          <Typography
+            variant="h5"
+            component="h1"
+            sx={{
+              color: "#212325",
+              fontWeight: "bold",
+              textAlign: "center",
+              flexGrow: 1,
+            }}
+          >
+            Sign Up
+          </Typography>
         </Box>
-       
 
-        <TextField fullWidth label="Name" margin="normal" variant="outlined" />
+        <TextField
+          fullWidth
+          label="Name"
+          margin="normal"
+          variant="outlined"
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "20px",
+            },
+          }}
+        />
 
-        <TextField fullWidth label="Email" margin="normal" variant="outlined" />
+        <TextField
+          fullWidth
+          label="Email"
+          margin="normal"
+          variant="outlined"
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "20px",
+            },
+          }}
+        />
 
         <TextField
           fullWidth
@@ -53,6 +99,11 @@ const SignUp = () => {
           type={showPassword ? "text" : "password"}
           margin="normal"
           variant="outlined"
+          sx={{
+            "& .MuiOutlinedInput-root": {
+              borderRadius: "20px",
+            },
+          }}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -73,11 +124,11 @@ const SignUp = () => {
           label={
             <Typography variant="body2">
               By signing up, you agree to the{" "}
-              <Link to="/terms">Terms of Service</Link> and{" "}
+              <Link to="/terms" sx>Terms of Service</Link> and{" "}
               <Link to="/privacy">Privacy Policy</Link>
             </Typography>
           }
-          sx={{ alignSelf: "start", mb: 2 }}
+          sx={{ alignSelf: "start", mb: 3 , mt:3 }}
         />
 
         <Button
