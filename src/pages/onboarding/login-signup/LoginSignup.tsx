@@ -60,7 +60,6 @@ const LoginSignup = () => {
         width: "100vw",
         height: "100vh",
         backgroundColor: "#FFF", // Ensure background color is white
-        transition: "opacity 0.5s ease-in-out",
         opacity: 1, // Fade in/out effect
         transform: showMain ? "translateY(0)" : "translateY(0px)", // Slide effect issue of margin on home page here
         transition: "transform 0.3s ease-in-out", // Smooth slide-in
@@ -97,7 +96,11 @@ const LoginSignup = () => {
                   <Typography variant="body1" sx={{ color: "#91919F" }}>
                     {slide.subtitle}
                   </Typography>
-                  <Box
+                  
+                </Box>
+              ))}
+            </SwipeableViews>
+            <Box
                     sx={{
                       display: "flex",
                       justifyContent: "center",
@@ -120,9 +123,6 @@ const LoginSignup = () => {
                       />
                     ))}
                   </Box>
-                </Box>
-              ))}
-            </SwipeableViews>
             <Box
               sx={{
                 display: "flex",
