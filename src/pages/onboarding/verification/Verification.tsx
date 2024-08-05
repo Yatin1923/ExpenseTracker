@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Verification.css';
 import {
   Container,
   Box,
@@ -7,10 +8,11 @@ import {
   TextField,
   Grid,
   IconButton,
+  Link,
 } from "@mui/material";
 import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
-import { ArrowBack } from "@mui/icons-material";
+import { ArrowBack, Style } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 
 const Verification: React.FC = () => {
@@ -101,7 +103,7 @@ const Verification: React.FC = () => {
               id={`code-${index}`}
               inputProps={{
                 maxLength: 1,
-                style: { textAlign: "center", fontSize: "24px" },
+                style: { textAlign: "center", fontSize: "24px",height:'1rem' },
               }}
               sx={{ width: 40, margin: 1 }}
               value={digit}
@@ -110,30 +112,44 @@ const Verification: React.FC = () => {
             />
           ))}
         </Box>
-        <Typography variant="body2" color="textSecondary" gutterBottom>
+        <Typography variant="body2" color="textSecondary" gutterBottom  sx={{color:'#7F3DFF',fontWeight:'bold'}}>
           04:59
         </Typography>
-        <Typography variant="body2" color="textSecondary" gutterBottom>
+        <Typography variant="body2" color="textSecondary" gutterBottom sx={{ fontWeight:'bold',mt:'10px'}}>
           We sent a verification code to your email brajaoma*****@gmail.com. You
           can check your inbox.
         </Typography>
-        <Typography variant="body2" color="primary" gutterBottom>
-          I didn’t receive the code? Send again
+        <Typography variant="body2" gutterBottom sx={{mt:'15px'}}>
+            <Link   sx={{color:'#7F3DFF', textDecoration:'none',fontWeight:'bold' , borderBottom:'1px solid #7F3DFF'}}>
+            I didn’t receive the code? Send again
+            </Link>
+          
         </Typography>
       </Box>
 
       <Button
         variant="contained"
-        color="primary"
+        
         fullWidth
-        sx={{ mt: 2, mb: 2 }}
+        sx={{
+            mb: 2,
+            mt:4,
+            height: "56px",
+            borderRadius: "16px",
+            textTransform: "none",
+            fontSize:'18px',
+            fontWeight:'bold',
+            backgroundColor:'#7F3DFF'
+          }}
       >
         Verify
       </Button>
       {showKeyboard && (
         <Keyboard
+    
           layout={{
             default: ["1 2 3", "4 5 6", "7 8 9", "0 {bksp}"],
+             
           }}
           display={{
             "{bksp}": "Back",
