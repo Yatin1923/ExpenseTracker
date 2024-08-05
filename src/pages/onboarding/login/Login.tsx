@@ -22,6 +22,9 @@ const Login = () => {
   const handleBackClick = () => {
     navigate(-1); // This will navigate back to the previous page
   };
+  const handleLoginClick = () =>{
+    navigate('/set-pin');
+  }
 
   return (
     <Container maxWidth="xs">
@@ -123,6 +126,7 @@ const Login = () => {
             fontWeight: "bold",
             backgroundColor: "#7F3DFF",
           }}
+          onClick={handleLoginClick}
         >
           Login
         </Button>
