@@ -61,6 +61,7 @@ const SignUp = () => {
             sx={{
               color: "#212325",
               fontWeight: "bold",
+              fontSize:'20px',
               textAlign: "center",
               flexGrow: 1,
             }}
@@ -124,13 +125,13 @@ const SignUp = () => {
           
           control={<Checkbox name="terms"   sx={{fontSize:'30px' , color:'#7F3DFF', mb:2}} />}
           label={
-            <Typography variant="body2">
+            <Typography variant="body2" sx={{fontWeight:'bold' , fontSize:'14px', textAlign:'left' , width:'75%', paddingLeft:'8px'}}>
               By signing up, you agree to the{" "}
-              <Link to="/terms" sx>Terms of Service</Link> and{" "}
-              <Link to="/privacy">Privacy Policy</Link>
+              <Link to="/terms"style={{textDecoration:'none' , color:'#7F3DFF'}}>Terms of Service</Link>
+              <Link to="/privacy" style={{textDecoration:'none' , color:'#7F3DFF'}}>  and{" "} Privacy Policy</Link>
             </Typography>
           }
-          sx={{ alignSelf: "start", mb: 3 , mt:3 }}
+          sx={{ alignSelf: "start", mb: 3 , mt:1 }}
         />
 
         <Button
