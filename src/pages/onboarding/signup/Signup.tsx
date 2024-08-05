@@ -123,9 +123,9 @@ const SignUp = () => {
 
         <FormControlLabel
           
-          control={<Checkbox name="terms"   sx={{fontSize:'30px' , color:'#7F3DFF', mb:2}} />}
+          control={<Checkbox name="terms"   sx={{fontSize:'60px !important', color:'#7F3DFF', mb:2}} />}
           label={
-            <Typography variant="body2" sx={{fontWeight:'bold' , fontSize:'14px', textAlign:'left' , width:'75%', paddingLeft:'8px'}}>
+            <Typography variant="body2" sx={{fontWeight:'bold' , fontSize:'14px', textAlign:'left' , width:'75%', paddingLeft:'5px'}}>
               By signing up, you agree to the{" "}
               <Link to="/terms"style={{textDecoration:'none' , color:'#7F3DFF'}}>Terms of Service</Link>
               <Link to="/privacy" style={{textDecoration:'none' , color:'#7F3DFF'}}>  and{" "} Privacy Policy</Link>
@@ -136,20 +136,22 @@ const SignUp = () => {
 
         <Button
           variant="contained"
-          color="primary"
+          
           fullWidth
           sx={{
             mb: 2,
-            background: "#7F3DFF",
             height: "56px",
             borderRadius: "16px",
             textTransform: "none",
+            fontSize:'18px',
+            fontWeight:'bold',
+            backgroundColor:'#7F3DFF'
           }}
         >
           Sign Up
         </Button>
 
-        <Typography variant="body2" sx={{ mb: 2 }}>
+        <Typography variant="body2" sx={{ mb: 2 , fontSize:'14px',fontWeight:'bold' , color:'#91919F' }}>
           Or with
         </Typography>
 
@@ -161,18 +163,21 @@ const SignUp = () => {
             height: "56px",
             borderRadius: "16px",
             textTransform: "none",
+            fontWeight:'bold',
+            color:'#212325',
+            fontSize:'18px'
           }}
         >
           <img
             src="https://img.icons8.com/color/16/000000/google-logo.png"
             alt="Google logo"
-            style={{ marginRight: "8px" }}
+            style={{ marginRight: "8px" , height:'25px' , width:'25px'}}
           />
           Sign Up with Google
         </Button>
 
-        <Typography variant="body2">
-          Already have an account? <Link to="/login">Login</Link>
+        <Typography variant="body2" sx={{color:'#91919F', fontWeight:'bold'}}>
+          Already have an account? <Link to="/login"  style={{color:'#7F3DFF', fontWeight:'bold'}}>Login</Link>
         </Typography>
       </Box>
     </Container>
