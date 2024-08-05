@@ -162,6 +162,7 @@ const SignUp = () => {
             mb: 2,
             height: "56px",
             borderRadius: "16px",
+            borderColor:'#91919F',
             textTransform: "none",
             fontWeight:'bold',
             color:'#212325',
@@ -176,7 +177,7 @@ const SignUp = () => {
           Sign Up with Google
         </Button>
 
-        <Typography variant="body2" sx={{color:'#91919F', fontWeight:'bold'}}>
+        <Typography variant="body2" sx={{color:'#91919F', fontWeight:'bold', fontSize:'14px'}}>
           Already have an account? <Link to="/login"  style={{color:'#7F3DFF', fontWeight:'bold'}}>Login</Link>
         </Typography>
       </Box>
