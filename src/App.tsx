@@ -6,6 +6,7 @@ import React from "react";
 import SetPin from "./pages/onboarding/set-pin/Setpin.tsx";
 import SignupSuccess from "./pages/onboarding/signUp-success/SignupSuccess.tsx";
 import Login from "./pages/onboarding/login/Login.tsx";
+import Verification from "./pages/onboarding/verification/Verification.tsx";
 // import SetPin from "./pages/onboarding/set-pin/SetPin.tsx";
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Onboarding />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
+          <Route path="/signup-verification" element={<Verification/>}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/set-pin" element={<SetPin />}></Route>
           <Route path="/signup-success" element={<SignupSuccess />}></Route>

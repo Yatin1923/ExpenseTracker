@@ -23,6 +23,10 @@ const SignUp = () => {
     navigate(-1); // This will navigate back to the previous page
   };
 
+  const handleSignup=()=>{
+    navigate("/signup-verification")
+  }
+
   return (
     <Container maxWidth="xs">
       <Box
@@ -147,6 +151,7 @@ const SignUp = () => {
             fontWeight:'bold',
             backgroundColor:'#7F3DFF'
           }}
+          onClick={handleSignup}
         >
           Sign Up
         </Button>
