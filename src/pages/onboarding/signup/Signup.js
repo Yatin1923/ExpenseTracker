@@ -111,6 +111,7 @@ const SignUp = () => {
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                   edge="end"
+                
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
@@ -120,7 +121,8 @@ const SignUp = () => {
         />
 
         <FormControlLabel
-          control={<Checkbox name="terms" />}
+          
+          control={<Checkbox name="terms"   sx={{fontSize:'30px' , color:'#7F3DFF', mb:2}} />}
           label={
             <Typography variant="body2">
               By signing up, you agree to the{" "}
