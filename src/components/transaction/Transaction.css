@@ -1,0 +1,7 @@
+.transaction-content{
+    display: flex ;
+    flex-direction: column ;
+    justify-content: space-between ;
+    align-items: start ;
+    padding: 5px 0 ;
+}

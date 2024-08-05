@@ -1,0 +1,63 @@
+.income,.expense{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1.5vh;
+    border-radius: 1.8rem;
+    gap: 2vw;
+    color: white;
+    background-color: #00A86B;
+}
+.expense{
+    background-color: #FD3C4A;
+}
+.period-chip-active{
+    padding: 0 2vw !important;
+    color: #FCAC12 !important;
+    background-color: #FCEED4 !important;
+    border: none !important;
+}
+.period-chip{
+    padding: 0 2vw !important;
+    border: none !important;
+    background-color: transparent !important;
+}
+.see-all-chip{
+    color: #7F3DFF !important;
+    padding: 0 2vw !important;
+    border: none !important;
+    font-weight: 500 !important;
+    background-color: #EEE5FF !important;
+}
+svg{
+    width: 32px !important;
+    height: 32px !important;
+}
+
+
+.icon path,.icon-label{
+    fill: #C6C6C6;
+    color: #C6C6C6;
+}
+.active-tab path,.active-tab .icon-label{
+    fill: #7F3DFF !important;
+    color: #7F3DFF !important;
+    transition: all 200ms ease-in-out;
+}
+.add-button{
+    background-color: #7F3DFF !important;
+    color: white !important;
+    width: 70px;
+    height: 70px;
+    position: absolute !important;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20%);
+}
+.chart{
+    transition: 3s ease-in-out;
+}
+/* .collapse{
+    height: 0 !important;
+    overflow: hidden;
+    transition: 3s ease-in-out;
+} */
