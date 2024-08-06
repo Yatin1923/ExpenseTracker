@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 const Verification: React.FC = () => {
   const [code, setCode] = useState<string[]>(["", "", "", "", "", ""]);
- 
+  const [timeLeft, setTimeLeft] = useState<number>(300); // 5 minutes in seconds
   const navigate = useNavigate();
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
    
@@ -42,6 +42,20 @@ const Verification: React.FC = () => {
     inputsRef.current = inputsRef.current.slice(0, code.length);
   }, [code]);
    
+  useEffect(() => {
+    if (timeLeft > 0) {
+      const timer = setInterval(() => {
+        setTimeLeft((prevTime) => prevTime - 1);
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [timeLeft]);
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  };
 
   const handleBackClick = () => {
     navigate(-1); // This will navigate back to the previous page
@@ -117,7 +131,7 @@ const Verification: React.FC = () => {
           ))}
         </Box>
         <Typography variant="body2" color="textSecondary" gutterBottom  sx={{color:'#7F3DFF',fontWeight:'bold'}}>
-          04:59
+        {formatTime(timeLeft)}
         </Typography>
         <Typography variant="body2" color="textSecondary" gutterBottom sx={{ fontWeight:'bold',mt:'10px'}}>
           We sent a verification code to your email <span style ={{color:'#7F3DFF',fontWeight:'bold'}}> brajaoma*****@gmail.com. </span>
