@@ -95,10 +95,10 @@ const Verification: React.FC = () => {
         </Typography>
       </Box>
       <Box sx={{ textAlign: "left" }}>
-        <Typography sx={{ fontWeight: "bold", fontSize: "36px", width: "80%" }}>
+        <Typography sx={{ fontWeight: "bold", fontSize: "36px", width: "80%",mt: '30%'}}>
           Enter your Verification Code
         </Typography>
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 2, mb: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 5, mb: 5 }}>
           {code.map((digit, index) => (
             <TextField
               key={index}
@@ -120,10 +120,10 @@ const Verification: React.FC = () => {
           04:59
         </Typography>
         <Typography variant="body2" color="textSecondary" gutterBottom sx={{ fontWeight:'bold',mt:'10px'}}>
-          We sent a verification code to your email brajaoma*****@gmail.com. You
-          can check your inbox.
+          We sent a verification code to your email <span style ={{color:'#7F3DFF',fontWeight:'bold'}}> brajaoma*****@gmail.com. </span>
+          {"  "}You can check your inbox.
         </Typography>
-        <Typography variant="body2" gutterBottom sx={{mt:'15px'}}>
+        <Typography variant="body2" gutterBottom sx={{mt:4}}>
             <Link   sx={{color:'#7F3DFF', textDecoration:'none',fontWeight:'bold' , borderBottom:'1px solid #7F3DFF'}}>
             I didn’t receive the code? Send again
             </Link>
@@ -137,7 +137,7 @@ const Verification: React.FC = () => {
         fullWidth
         sx={{
             mb: 2,
-            mt:4,
+            mt:5,
             background: "#7F3DFF",
             height: "56px",
             borderRadius: "16px",
