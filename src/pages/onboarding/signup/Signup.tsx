@@ -23,9 +23,9 @@ const SignUp = () => {
     navigate(-1); // This will navigate back to the previous page
   };
 
-  const handleSignup=()=>{
-    navigate("/signup-verification")
-  }
+  const handleSignup = () => {
+    navigate("/signup-verification");
+  };
 
   return (
     <Container maxWidth="xs">
@@ -65,7 +65,7 @@ const SignUp = () => {
             sx={{
               color: "#212325",
               fontWeight: "bold",
-              fontSize:'20px',
+              fontSize: "20px",
               textAlign: "center",
               flexGrow: 1,
             }}
@@ -116,7 +116,6 @@ const SignUp = () => {
                   aria-label="toggle password visibility"
                   onClick={handleClickShowPassword}
                   edge="end"
-                
                 >
                   {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
@@ -126,37 +125,60 @@ const SignUp = () => {
         />
 
         <FormControlLabel
-          
-          control={<Checkbox name="terms"   sx={{fontSize:'60px !important', color:'#7F3DFF', mb:2}} />}
+          control={
+            <Checkbox
+              name="terms"
+              sx={{ fontSize: "60px !important", color: "#7F3DFF", mb: 2 }}
+            />
+          }
           label={
-            <Typography variant="body2" sx={{fontWeight:'bold' , fontSize:'14px', textAlign:'left' , width:'75%', paddingLeft:'5px'}}>
+            <Typography
+              variant="body2"
+              sx={{
+                fontWeight: "bold",
+                fontSize: "14px",
+                textAlign: "left",
+                width: "75%",
+                paddingLeft: "5px",
+              }}
+            >
               By signing up, you agree to the{" "}
-              <Link to="/terms"style={{textDecoration:'none' , color:'#7F3DFF'}}>Terms of Service</Link>
-              <Link to="/privacy" style={{textDecoration:'none' , color:'#7F3DFF'}}>  and{" "} Privacy Policy</Link>
+              <Link
+                to="/terms"
+                style={{ textDecoration: "none", color: "#7F3DFF" }}
+              >
+                Terms of Service
+              </Link>
+              <Link
+                to="/privacy"
+                style={{ textDecoration: "none", color: "#7F3DFF" }}
+              >
+                {" "}
+                and Privacy Policy
+              </Link>
             </Typography>
           }
-          sx={{ alignSelf: "start", mb: 3 , mt:1 }}
+          sx={{ alignSelf: "start", mb: 3, mt: 1 }}
         />
 
         <Button
           variant="contained"
-          
           fullWidth
           sx={{
             mb: 2,
+            background: "#7F3DFF",
             height: "56px",
             borderRadius: "16px",
-            textTransform: "none",
-            fontSize:'18px',
-            fontWeight:'bold',
-            backgroundColor:'#7F3DFF'
           }}
           onClick={handleSignup}
         >
           Sign Up
         </Button>
 
-        <Typography variant="body2" sx={{ mb: 2 , fontSize:'14px',fontWeight:'bold' , color:'#91919F' }}>
+        <Typography
+          variant="body2"
+          sx={{ mb: 2, fontSize: "14px", fontWeight: "bold", color: "#91919F" }}
+        >
           Or with
         </Typography>
 
@@ -167,23 +189,29 @@ const SignUp = () => {
             mb: 2,
             height: "56px",
             borderRadius: "16px",
-            borderColor:'#91919F',
+            borderColor: "#91919F",
             textTransform: "none",
-            fontWeight:'bold',
-            color:'#212325',
-            fontSize:'18px'
+            fontWeight: "bold",
+            color: "#212325",
+            fontSize: "18px",
           }}
         >
           <img
             src="https://img.icons8.com/color/16/000000/google-logo.png"
             alt="Google logo"
-            style={{ marginRight: "8px" , height:'25px' , width:'25px'}}
+            style={{ marginRight: "8px", height: "25px", width: "25px" }}
           />
           Sign Up with Google
         </Button>
 
-        <Typography variant="body2" sx={{color:'#91919F', fontWeight:'bold', fontSize:'14px'}}>
-          Already have an account? <Link to="/login"  style={{color:'#7F3DFF', fontWeight:'bold'}}>Login</Link>
+        <Typography
+          variant="body2"
+          sx={{ color: "#91919F", fontWeight: "bold", fontSize: "14px" }}
+        >
+          Already have an account?{" "}
+          <Link to="/login" style={{ color: "#7F3DFF", fontWeight: "bold" }}>
+            Login
+          </Link>
         </Typography>
       </Box>
     </Container>

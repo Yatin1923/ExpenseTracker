@@ -119,12 +119,9 @@ const Login = () => {
           fullWidth
           sx={{
             mb: 2,
+            background: "#7F3DFF",
             height: "56px",
             borderRadius: "16px",
-            textTransform: "none",
-            fontSize: "18px",
-            fontWeight: "bold",
-            backgroundColor: "#7F3DFF",
           }}
           onClick={handleLoginClick}
         >

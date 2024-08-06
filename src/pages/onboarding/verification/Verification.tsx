@@ -134,12 +134,9 @@ const Verification: React.FC = () => {
         sx={{
             mb: 2,
             mt:4,
+            background: "#7F3DFF",
             height: "56px",
             borderRadius: "16px",
-            textTransform: "none",
-            fontSize:'18px',
-            fontWeight:'bold',
-            backgroundColor:'#7F3DFF'
           }}
       >
         Verify
