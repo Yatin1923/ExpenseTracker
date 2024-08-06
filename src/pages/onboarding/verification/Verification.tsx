@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import './Verification.css';
 import {
   Container,
@@ -17,8 +17,10 @@ import { useNavigate } from "react-router-dom";
 
 const Verification: React.FC = () => {
   const [code, setCode] = useState<string[]>(["", "", "", "", "", ""]);
-  const [showKeyboard, setShowKeyboard] = useState(false);
+ 
   const navigate = useNavigate();
+  const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+   
   const handleInputChange = (index: number, value: string) => {
     const newCode = [...code];
     newCode[index] = value;
@@ -29,17 +31,17 @@ const Verification: React.FC = () => {
     }
   };
 
-  const handleKeyboardInput = (button: string) => {
-    const currentIndex = code.findIndex((val) => val === "");
-    if (button === "{bksp}") {
-      const lastIndex = currentIndex === -1 ? 5 : currentIndex - 1;
-      handleInputChange(lastIndex, "");
-      const prevInput = document.getElementById(`code-${lastIndex}`);
+  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace' && code[index] === '' && index > 0) {
+      const prevInput = document.getElementById(`code-${index - 1}`);
       if (prevInput) prevInput.focus();
-    } else if (currentIndex !== -1) {
-      handleInputChange(currentIndex, button);
     }
   };
+
+  useEffect(() => {
+    inputsRef.current = inputsRef.current.slice(0, code.length);
+  }, [code]);
+   
 
   const handleBackClick = () => {
     navigate(-1); // This will navigate back to the previous page
@@ -108,7 +110,9 @@ const Verification: React.FC = () => {
               sx={{ width: 40, margin: 1 }}
               value={digit}
               onChange={(e) => handleInputChange(index, e.target.value)}
-              onFocus={() => setShowKeyboard(true)}
+              onKeyDown={(e:any) => handleKeyDown(index, e)}
+              ref={(el:HTMLInputElement) => (inputsRef.current[index] = el!)}
+            
             />
           ))}
         </Box>
@@ -141,19 +145,7 @@ const Verification: React.FC = () => {
       >
         Verify
       </Button>
-      {showKeyboard && (
-        <Keyboard
-    
-          layout={{
-            default: ["1 2 3", "4 5 6", "7 8 9", "0 {bksp}"],
-             
-          }}
-          display={{
-            "{bksp}": "Back",
-          }}
-          onKeyPress={handleKeyboardInput}
-        />
-      )}
+      
     </Container>
   );
 };
