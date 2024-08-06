@@ -35,7 +35,7 @@ const SetPin = () => {
             setStage(1);
         } else if (stage === 1 && confirmPin.length === 4) {
             if (pin.join('') === confirmPin.join('')) {
-                alert("PIN set successfully!!");
+                alert("PIN set successfully!");
                 navigate('/signup-success');
             } else {
                 alert("PINs do not match, please try again.");
