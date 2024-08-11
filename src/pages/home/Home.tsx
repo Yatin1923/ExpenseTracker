@@ -136,7 +136,7 @@ const Home = () => {
                 <Box>
                     <Box sx={{ padding: '2vh 5vw', display: "flex", alignItems: 'center', justifyContent: 'space-between' }}>
                         <h3 style={{ textAlign: 'left' }}>Recent Transaction</h3>
-                        <Chip label="See All" className="see-all-chip" onClick={()=>handleTabClick("transaction")} />
+                        <Chip label="See All" className="see-all-chip" onClick={()=>{}} />
                     </Box>
                     <Box sx={{padding:'0 5vw'}}>
                         <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
