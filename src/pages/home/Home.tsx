@@ -1,5 +1,5 @@
-import { Box, Button, FormControl, IconButton, InputLabel, MenuItem, Select, styled } from "@mui/material"
-import React, { useEffect, useState } from "react"
+import { Box, FormControl, IconButton } from "@mui/material"
+import React, { useState } from "react"
 import './Home.css'
 import ReactEcharts from "echarts-for-react";
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -7,22 +7,18 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CustomSelect from "../../components/select/Select.tsx";
 import IncomeImage from "../../images/Income.png";
 import ExpenseImage from "../../images/Expense.png";
-import { ReactComponent as HomeIcon } from "../../images/home.svg";
-import { ReactComponent as TransactionIcon } from "../../images/Transaction.svg";
-import { ReactComponent as PieChartIcon } from "../../images/Pie chart.svg";
-import { ReactComponent as UserIcon } from "../../images/user.svg";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import AddIcon from '@mui/icons-material/Add';
 import Transaction from "../../components/transactionComponent/Transaction.tsx";
 import { amountType } from "../utils/type/type.tsx";
+import { useNavigate } from "react-router-dom";
 const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const currentMonth = new Date(Date.now()).getMonth();
 
 
 const Home = () => {
+    const navigate = useNavigate();
     const [activeChip, SetActiveChip] = useState("TODAY")
-    const [showChart, SetShowChart] = useState(true)
     const handleChipClick = (event) => {
         SetActiveChip(event.target.textContent.toUpperCase());
     };
@@ -122,7 +118,7 @@ const Home = () => {
                     </Box>
                 </Box>
                 {/* Chart */}
-                <Box className={showChart?"chart":"chart collapse"} sx={{ width: '100%', textAlign: 'left' }}>
+                <Box sx={{ width: '100%', textAlign: 'left' }}>
                     <h3 style={{ padding: '1vh 5vw' }}>Spend Frequency</h3>
                     <ReactEcharts option={option} style={{ width: "100%", maxHeight: '200px' }} />
                     <Stack direction="row" spacing={0} sx={{ padding: '0 5vw', justifyContent: 'space-between' }}>
@@ -136,7 +132,7 @@ const Home = () => {
                 <Box>
                     <Box sx={{ padding: '2vh 5vw', display: "flex", alignItems: 'center', justifyContent: 'space-between' }}>
                         <h3 style={{ textAlign: 'left' }}>Recent Transaction</h3>
-                        <Chip label="See All" className="see-all-chip" onClick={()=>{}} />
+                        <Chip label="See All" className="see-all-chip" onClick={()=>{navigate('/transaction')}} />
                     </Box>
                     <Box sx={{padding:'0 5vw'}}>
                         <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>

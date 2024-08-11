@@ -13,9 +13,9 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { CssTransition } from '@mui/base/Transitions';
 import { PopupContext } from '@mui/base/Unstable_Popup';
 
-export default function CustomSelect({ options, defaultvalue }) {
+export default function CustomSelect({ options, defaultvalue, style }) {
   return (
-    <Select defaultValue={defaultvalue}>
+    <Select defaultValue={defaultvalue} style={style} >
       {options.map((option, index) => {
         return <Option key={option} value={index}>{option}</Option>
       })}
@@ -89,7 +89,7 @@ const StyledButton = styled(Button, { shouldForwardProp: () => true })(
   text-align: left;
   line-height: 1.5;
   // background: ${theme.palette.mode === 'dark' ? purple[900] : '#fff'};
-  border: none;
+  border:none;
   background:transparent;
   color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
   position: relative;
