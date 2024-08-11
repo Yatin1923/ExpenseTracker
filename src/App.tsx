@@ -8,6 +8,7 @@ import SetPin from "./pages/onboarding/set-pin/Setpin.tsx";
 import SignupSuccess from "./pages/onboarding/signUp-success/SignupSuccess.tsx";
 import Login from "./pages/onboarding/login/Login.tsx";
 import Verification from "./pages/onboarding/verification/Verification.tsx";
+import Footer from "./components/footer/Footer.tsx";
 // import SetPin from "./pages/onboarding/set-pin/SetPin.tsx";
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
         </Routes>
       </Router>
+      <Footer></Footer>
     </div>
   );
 }
