@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from 'react';
 import './Verification.css';
 import {
   Container,
@@ -17,8 +17,10 @@ import { useNavigate } from "react-router-dom";
 
 const Verification: React.FC = () => {
   const [code, setCode] = useState<string[]>(["", "", "", "", "", ""]);
-  const [showKeyboard, setShowKeyboard] = useState(false);
+  const [timeLeft, setTimeLeft] = useState<number>(300); // 5 minutes in seconds
   const navigate = useNavigate();
+  const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
+   
   const handleInputChange = (index: number, value: string) => {
     const newCode = [...code];
     newCode[index] = value;
@@ -29,16 +31,30 @@ const Verification: React.FC = () => {
     }
   };
 
-  const handleKeyboardInput = (button: string) => {
-    const currentIndex = code.findIndex((val) => val === "");
-    if (button === "{bksp}") {
-      const lastIndex = currentIndex === -1 ? 5 : currentIndex - 1;
-      handleInputChange(lastIndex, "");
-      const prevInput = document.getElementById(`code-${lastIndex}`);
+  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Backspace' && code[index] === '' && index > 0) {
+      const prevInput = document.getElementById(`code-${index - 1}`);
       if (prevInput) prevInput.focus();
-    } else if (currentIndex !== -1) {
-      handleInputChange(currentIndex, button);
     }
+  };
+
+  useEffect(() => {
+    inputsRef.current = inputsRef.current.slice(0, code.length);
+  }, [code]);
+   
+  useEffect(() => {
+    if (timeLeft > 0) {
+      const timer = setInterval(() => {
+        setTimeLeft((prevTime) => prevTime - 1);
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [timeLeft]);
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
   };
 
   const handleBackClick = () => {
@@ -93,10 +109,10 @@ const Verification: React.FC = () => {
         </Typography>
       </Box>
       <Box sx={{ textAlign: "left" }}>
-        <Typography sx={{ fontWeight: "bold", fontSize: "36px", width: "80%" }}>
+        <Typography sx={{ fontWeight: "bold", fontSize: "36px", width: "80%",mt: '30%'}}>
           Enter your Verification Code
         </Typography>
-        <Box sx={{ display: "flex", justifyContent: "center", mt: 2, mb: 2 }}>
+        <Box sx={{ display: "flex", justifyContent: "center", mt: 5, mb: 5 }}>
           {code.map((digit, index) => (
             <TextField
               key={index}
@@ -108,18 +124,20 @@ const Verification: React.FC = () => {
               sx={{ width: 40, margin: 1 }}
               value={digit}
               onChange={(e) => handleInputChange(index, e.target.value)}
-              onFocus={() => setShowKeyboard(true)}
+              onKeyDown={(e:any) => handleKeyDown(index, e)}
+              ref={(el:HTMLInputElement) => (inputsRef.current[index] = el!)}
+            
             />
           ))}
         </Box>
         <Typography variant="body2" color="textSecondary" gutterBottom  sx={{color:'#7F3DFF',fontWeight:'bold'}}>
-          04:59
+        {formatTime(timeLeft)}
         </Typography>
         <Typography variant="body2" color="textSecondary" gutterBottom sx={{ fontWeight:'bold',mt:'10px'}}>
-          We sent a verification code to your email brajaoma*****@gmail.com. You
-          can check your inbox.
+          We sent a verification code to your email <span style ={{color:'#7F3DFF',fontWeight:'bold'}}> brajaoma*****@gmail.com. </span>
+          {"  "}You can check your inbox.
         </Typography>
-        <Typography variant="body2" gutterBottom sx={{mt:'15px'}}>
+        <Typography variant="body2" gutterBottom sx={{mt:4}}>
             <Link   sx={{color:'#7F3DFF', textDecoration:'none',fontWeight:'bold' , borderBottom:'1px solid #7F3DFF'}}>
             I didn’t receive the code? Send again
             </Link>
@@ -133,30 +151,15 @@ const Verification: React.FC = () => {
         fullWidth
         sx={{
             mb: 2,
-            mt:4,
+            mt:5,
+            background: "#7F3DFF",
             height: "56px",
             borderRadius: "16px",
-            textTransform: "none",
-            fontSize:'18px',
-            fontWeight:'bold',
-            backgroundColor:'#7F3DFF'
           }}
       >
         Verify
       </Button>
-      {showKeyboard && (
-        <Keyboard
-    
-          layout={{
-            default: ["1 2 3", "4 5 6", "7 8 9", "0 {bksp}"],
-             
-          }}
-          display={{
-            "{bksp}": "Back",
-          }}
-          onKeyPress={handleKeyboardInput}
-        />
-      )}
+      
     </Container>
   );
 };
