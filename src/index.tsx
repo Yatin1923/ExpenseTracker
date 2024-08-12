@@ -10,7 +10,7 @@ import '@fontsource/roboto/700.css';
 import theme from './pages/utils/theme.tsx'
 import { ThemeProvider } from '@mui/material/styles';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
   <ThemeProvider theme={theme}>
     <React.StrictMode>

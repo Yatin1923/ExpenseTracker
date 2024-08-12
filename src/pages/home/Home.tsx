@@ -1,5 +1,5 @@
-import { Box, Button, FormControl, IconButton, InputLabel, MenuItem, Select, styled } from "@mui/material"
-import React, { useEffect, useState } from "react"
+import { Box, FormControl, IconButton } from "@mui/material"
+import React, { useState } from "react"
 import './Home.css'
 import ReactEcharts from "echarts-for-react";
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -7,14 +7,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CustomSelect from "../../components/select/Select.tsx";
 import IncomeImage from "../../images/Income.png";
 import ExpenseImage from "../../images/Expense.png";
-import { ReactComponent as HomeIcon } from "../../images/home.svg";
-import { ReactComponent as TransactionIcon } from "../../images/Transaction.svg";
-import { ReactComponent as PieChartIcon } from "../../images/Pie chart.svg";
-import { ReactComponent as UserIcon } from "../../images/user.svg";
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-import AddIcon from '@mui/icons-material/Add';
-import Transaction from "../../components/transaction/Transaction.tsx";
+import Transaction from "../../components/transactionComponent/Transaction.tsx";
 import { amountType } from "../utils/type/type.tsx";
 import { useNavigate } from "react-router-dom";
 const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
@@ -22,13 +17,11 @@ const currentMonth = new Date(Date.now()).getMonth();
 
 
 const Home = () => {
-    let lastScrollTop = 0;
-    // let isScrollingDown =true;
-   
+    const navigate = useNavigate();
     const [activeChip, SetActiveChip] = useState("TODAY")
     const [activeTab, SetActiveTab] = useState("HOME")
     const [showChart, SetShowChart] = useState(true)
-    const navigate = useNavigate();
+    
     const handleTabClick=(selectedTab:string)=>{
         console.log(selectedTab)
         SetActiveTab(selectedTab.toUpperCase());
@@ -94,30 +87,17 @@ const Home = () => {
             }
         ]
     };
-    useEffect(()=>{
-        const handleScroll = ()=>{
-            const isScrollingDown = window.scrollY<lastScrollTop;
-            lastScrollTop = window.scrollY;
-            console.log(isScrollingDown,lastScrollTop);
-            SetShowChart(isScrollingDown);
-        }
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-          };
-    },[])
     return (
         <>
             <Box>
                 {/* header */}
-                <Box sx={{zIndex:100,backgroundColor:'white', backgroundImage: 'linear-gradient(rgb(255,246,229,1),rgb(248,237,216,0.35))', borderBottomLeftRadius: '10%', borderBottomRightRadius: '10%', padding: '1vh 5vw', paddingBottom: '4vh',position: 'sticky', top: 0 }}>
+                <Box sx={{zIndex:100,backgroundColor:'white', backgroundImage: 'linear-gradient(rgb(255,246,229,1),rgb(248,237,216,0.35))', borderBottomLeftRadius: '10%', borderBottomRightRadius: '10%', padding: '1vh 5vw', paddingBottom: '4vh', top: 0 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
                         <IconButton>
                             <AccountCircleIcon style={{ color: '#7F3DFF', fontSize: '2rem' }}></AccountCircleIcon>
                         </IconButton>
                         <FormControl>
-                            <CustomSelect options={months} defaultvalue={currentMonth}></CustomSelect>
+                            <CustomSelect style={undefined} options={months} defaultvalue={currentMonth}></CustomSelect>
                         </FormControl>
                         <IconButton>
                             <NotificationsIcon style={{ color: '#7F3DFF', fontSize: '2rem' }}></NotificationsIcon>
@@ -146,7 +126,7 @@ const Home = () => {
                     </Box>
                 </Box>
                 {/* Chart */}
-                <Box className={showChart?"chart":"chart collapse"} sx={{ width: '100%', textAlign: 'left' }}>
+                <Box sx={{ width: '100%', textAlign: 'left' }}>
                     <h3 style={{ padding: '1vh 5vw' }}>Spend Frequency</h3>
                     <ReactEcharts option={option} style={{ width: "100%", maxHeight: '200px' }} />
                     <Stack direction="row" spacing={0} sx={{ padding: '0 5vw', justifyContent: 'space-between' }}>
@@ -160,7 +140,7 @@ const Home = () => {
                 <Box>
                     <Box sx={{ padding: '2vh 5vw', display: "flex", alignItems: 'center', justifyContent: 'space-between' }}>
                         <h3 style={{ textAlign: 'left' }}>Recent Transaction</h3>
-                        <Chip label="See All" className="see-all-chip" onClick={()=>handleTabClick("transaction")} />
+                        <Chip label="See All" className="see-all-chip" onClick={()=>{navigate('/transaction')}} />
                     </Box>
                     <Box sx={{padding:'0 5vw'}}>
                         <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
@@ -168,10 +148,10 @@ const Home = () => {
                         <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
                         <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
                         <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
-                    </Box>
+                    </Box> 
                 </Box>
                 {/* Footer */}
-                <Box sx={{ backgroundColor: 'white', padding: '2vh 0', width: '100%', position: 'sticky', bottom: 0 }}>
+                {/* <Box sx={{ backgroundColor: 'white', padding: '2vh 0', width: '100%', position: 'sticky', bottom: 0 }}>
                     <Box className="flex space-between align-center" sx={{ padding: '1vh 5vw' }}>
                         <Box className="flex space-between align-center" sx={{ width: '35%', fontSize: '0.85rem' }}>
                             <div className={activeTab=="HOME"?"active-tab":"icon"}>
@@ -203,7 +183,7 @@ const Home = () => {
                             </div>
                         </Box>
                     </Box>
-                </Box>
+                </Box> */}
             </Box>
         </>
     )

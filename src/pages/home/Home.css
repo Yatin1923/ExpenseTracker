@@ -35,24 +35,7 @@ svg{
 }
 
 
-.icon path,.icon-label{
-    fill: #C6C6C6;
-    color: #C6C6C6;
-}
-.active-tab path,.active-tab .icon-label{
-    fill: #7F3DFF !important;
-    color: #7F3DFF !important;
-    transition: all 200ms ease-in-out;
-}
-.add-button{
-    background-color: #7F3DFF !important;
-    color: white !important;
-    width: 70px;
-    height: 70px;
-    position: absolute !important;
-    left: 50%;
-    transform: translateX(-50%) translateY(-20%);
-}
+
 .chart{
     transition: 3s ease-in-out;
 }

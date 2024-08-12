@@ -5,9 +5,10 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import EditIcon from '@mui/icons-material/Edit';
+import Tejas from "../../images/Tejas.jpg"; // Adjust the path as necessary
 
 const Profile = () => {
-    const username = "Pinky Patel";
+    const username = "Tejas Bariya";
 
     return (
         <Box
@@ -29,7 +30,7 @@ const Profile = () => {
             >
                 <Box sx={{ position: 'relative' }}>
                     <Avatar
-                        src="path_to_image" // Replace with the path to the user's image
+                        src={Tejas} // Replace with the path to the user's image
                         sx={{
                             width: '100px',
                             height: '100px',
@@ -59,14 +60,15 @@ const Profile = () => {
             </Box>
 
             <List sx={{ marginTop: '20px', backgroundColor: '#FFFFFF', borderRadius: '10px' }}>
-                <ListItem disablePadding sx={{ padding: '16px 20px' }}>
+                <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemIcon
                             sx={{
                                 backgroundColor: '#F3EFFF',
-                                borderRadius: '8px',
+                                borderRadius: '12px',
                                 minWidth: '40px',
                                 padding: '8px',
+                                paddingRight:'initial',
                                 marginRight: '16px',
                             }}
                         >
@@ -76,14 +78,15 @@ const Profile = () => {
                     </ListItemButton>
                 </ListItem>
                 <Divider />
-                <ListItem disablePadding sx={{ padding: '16px 20px' }}>
+                <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemIcon
                             sx={{
                                 backgroundColor: '#F3EFFF',
-                                borderRadius: '8px',
+                                borderRadius: '12px',
                                 minWidth: '40px',
                                 padding: '8px',
+                                paddingRight:'initial',
                                 marginRight: '16px',
                             }}
                         >
@@ -93,14 +96,15 @@ const Profile = () => {
                     </ListItemButton>
                 </ListItem>
                 <Divider />
-                <ListItem disablePadding sx={{ padding: '16px 20px' }}>
+                <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemIcon
                             sx={{
                                 backgroundColor: '#F3EFFF',
-                                borderRadius: '8px',
+                                borderRadius: '12px',
                                 minWidth: '40px',
                                 padding: '8px',
+                                paddingRight:'initial',
                                 marginRight: '16px',
                             }}
                         >
@@ -110,14 +114,15 @@ const Profile = () => {
                     </ListItemButton>
                 </ListItem>
                 <Divider />
-                <ListItem disablePadding sx={{ padding: '16px 20px' }}>
+                <ListItem disablePadding>
                     <ListItemButton>
                         <ListItemIcon
                             sx={{
                                 backgroundColor: '#FFEDED',
-                                borderRadius: '8px',
+                                borderRadius: '12px',
                                 minWidth: '40px',
                                 padding: '8px',
+                                paddingRight:'initial',
                                 marginRight: '16px',
                             }}
                         >
