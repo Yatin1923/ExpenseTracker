@@ -10,6 +10,7 @@ import Login from "./pages/onboarding/login/Login.tsx";
 import Verification from "./pages/onboarding/verification/Verification.tsx";
 import Footer from "./components/footer/Footer.tsx";
 import Transaction from "./pages/transactionPage/TransactionPage.tsx";
+import Profile from "./pages/profile/profile.tsx";
 // import SetPin from "./pages/onboarding/set-pin/SetPin.tsx";
 function App() {
   return (
@@ -32,6 +33,7 @@ function AppRoutes() {
       <Route path="/signup-success" element={<SignupSuccess />} />
       <Route path="/home" element={<Home />} />
       <Route path="/home/transaction" element={<Transaction />} />
+      <Route path="/home/profile" element={<Profile />}></Route>
     </Routes>
   );
 }
@@ -42,3 +44,4 @@ function FooterWrapper() {
 }
 
 export default App;
+
