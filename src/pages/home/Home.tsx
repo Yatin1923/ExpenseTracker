@@ -27,6 +27,14 @@ const transaction:TransactionModel = {
 const Home = () => {
     const navigate = useNavigate();
     const [activeChip, SetActiveChip] = useState("TODAY")
+    const [activeTab, SetActiveTab] = useState("HOME")
+    const [showChart, SetShowChart] = useState(true)
+    
+    const handleTabClick=(selectedTab:string)=>{
+        console.log(selectedTab)
+        SetActiveTab(selectedTab.toUpperCase());
+        navigate('/profile');
+    }
     const handleChipClick = (event) => {
         SetActiveChip(event.target.textContent.toUpperCase());
     };
@@ -97,7 +105,7 @@ const Home = () => {
                             <AccountCircleIcon style={{ color: '#7F3DFF', fontSize: '2rem' }}></AccountCircleIcon>
                         </IconButton>
                         <FormControl>
-                            <CustomSelect options={months} defaultvalue={currentMonth}></CustomSelect>
+                            <CustomSelect style={undefined} options={months} defaultvalue={currentMonth}></CustomSelect>
                         </FormControl>
                         <IconButton>
                             <NotificationsIcon style={{ color: '#7F3DFF', fontSize: '2rem' }}></NotificationsIcon>
