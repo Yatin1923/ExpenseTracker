@@ -8,6 +8,7 @@ import SetPin from "./pages/onboarding/set-pin/Setpin.tsx";
 import SignupSuccess from "./pages/onboarding/signUp-success/SignupSuccess.tsx";
 import Login from "./pages/onboarding/login/Login.tsx";
 import Verification from "./pages/onboarding/verification/Verification.tsx";
+import Profile from "./pages/profile/profile.tsx";
 // import SetPin from "./pages/onboarding/set-pin/SetPin.tsx";
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/set-pin" element={<SetPin />}></Route>
           <Route path="/signup-success" element={<SignupSuccess />}></Route>
           <Route path="/home" element={<Home />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
         </Routes>
       </Router>
     </div>
@@ -28,3 +30,4 @@ function App() {
 }
 
 export default App;
+

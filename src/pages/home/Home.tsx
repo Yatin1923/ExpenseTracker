@@ -16,6 +16,7 @@ import Stack from '@mui/material/Stack';
 import AddIcon from '@mui/icons-material/Add';
 import Transaction from "../../components/transaction/Transaction.tsx";
 import { amountType } from "../utils/type/type.tsx";
+import { useNavigate } from "react-router-dom";
 const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const currentMonth = new Date(Date.now()).getMonth();
 
@@ -27,9 +28,11 @@ const Home = () => {
     const [activeChip, SetActiveChip] = useState("TODAY")
     const [activeTab, SetActiveTab] = useState("HOME")
     const [showChart, SetShowChart] = useState(true)
+    const navigate = useNavigate();
     const handleTabClick=(selectedTab:string)=>{
         console.log(selectedTab)
         SetActiveTab(selectedTab.toUpperCase());
+        navigate('/profile');
     }
     const handleChipClick = (event) => {
         SetActiveChip(event.target.textContent.toUpperCase());
