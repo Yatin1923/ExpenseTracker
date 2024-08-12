@@ -12,10 +12,18 @@ import Stack from '@mui/material/Stack';
 import Transaction from "../../components/transactionComponent/Transaction.tsx";
 import { amountType } from "../utils/type/type.tsx";
 import { useNavigate } from "react-router-dom";
+import { TransactionModel } from "../../components/transactionComponent/TransactionModel.ts";
 const months = ['January', 'Febuary', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const currentMonth = new Date(Date.now()).getMonth();
+const currentDate = new Date(Date.now());
+const transaction:TransactionModel = {
+    category:"Shopping",
+    amount:10,
+    description:"Buy some grocery",
+    date:currentDate,
+    type:amountType.EXPENSE
 
-
+}
 const Home = () => {
     const navigate = useNavigate();
     const [activeChip, SetActiveChip] = useState("TODAY")
@@ -135,11 +143,11 @@ const Home = () => {
                         <Chip label="See All" className="see-all-chip" onClick={()=>{navigate('/transaction')}} />
                     </Box>
                     <Box sx={{padding:'0 5vw'}}>
-                        <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
-                        <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
-                        <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
-                        <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
-                        <Transaction category="Shopping" amount={10} description={"Buy some grocery"} time={"10:00 AM"} type={amountType.EXPENSE}></Transaction>
+                        <Transaction  category="Shopping" amount={10} description={"Buy some grocery"} date={currentDate} type={amountType.EXPENSE}></Transaction>
+                        <Transaction category="Shopping" amount={10} description={"Buy some grocery"} date={currentDate} type={amountType.EXPENSE}></Transaction>
+                        <Transaction category="Shopping" amount={10} description={"Buy some grocery"} date={currentDate} type={amountType.EXPENSE}></Transaction>
+                        <Transaction category="Shopping" amount={10} description={"Buy some grocery"} date={currentDate} type={amountType.EXPENSE}></Transaction>
+                        <Transaction category="Shopping" amount={10} description={"Buy some grocery"} date={currentDate} type={amountType.EXPENSE}></Transaction>
                     </Box> 
                 </Box>
                 {/* Footer */}
