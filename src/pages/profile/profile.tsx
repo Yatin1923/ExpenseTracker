@@ -6,10 +6,11 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import EditIcon from '@mui/icons-material/Edit';
 import Tejas from "../../images/Tejas.jpg"; // Adjust the path as necessary
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const username = "Tejas Bariya";
-
+    const navigate = useNavigate();
     return (
         <Box
             sx={{
@@ -79,7 +80,7 @@ const Profile = () => {
                 </ListItem>
                 <Divider />
                 <ListItem disablePadding>
-                    <ListItemButton>
+                    <ListItemButton  onClick={()=>{navigate('/settings')}}>
                         <ListItemIcon
                             sx={{
                                 backgroundColor: '#F3EFFF',
