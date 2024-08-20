@@ -7,7 +7,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import EditIcon from '@mui/icons-material/Edit';
 import Tejas from "../../images/Tejas.jpg"; // Adjust the path as necessary
-import { useNavigate } from "react-router-dom";
+
 
 const Profile = () => {
     const username = "Tejas Bariya";
