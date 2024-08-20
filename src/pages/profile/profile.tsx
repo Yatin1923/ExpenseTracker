@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Typography, Avatar, IconButton, List, ListItem, ListItemIcon, ListItemText, ListItemButton, Divider } from '@mui/material';
+import { useNavigate } from 'react-router-dom'; // or use another navigation method
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -10,7 +11,13 @@ import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
     const username = "Tejas Bariya";
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // Hook for navigation
+
+    const handleSettingsClick = () => {
+        // Logic for handling settings click
+        navigate('/Settings'); // Example: navigate to the settings page
+    };
+
     return (
         <Box
             sx={{
@@ -67,9 +74,8 @@ const Profile = () => {
                             sx={{
                                 backgroundColor: '#F3EFFF',
                                 borderRadius: '12px',
-                                minWidth: '40px',
+                                minWidth: '12px',
                                 padding: '8px',
-                                paddingRight:'initial',
                                 marginRight: '16px',
                             }}
                         >
@@ -80,14 +86,13 @@ const Profile = () => {
                 </ListItem>
                 <Divider />
                 <ListItem disablePadding>
-                    <ListItemButton  onClick={()=>{navigate('/settings')}}>
+                    <ListItemButton onClick={handleSettingsClick}>
                         <ListItemIcon
                             sx={{
                                 backgroundColor: '#F3EFFF',
                                 borderRadius: '12px',
-                                minWidth: '40px',
+                                minWidth: '12px',
                                 padding: '8px',
-                                paddingRight:'initial',
                                 marginRight: '16px',
                             }}
                         >
@@ -103,9 +108,8 @@ const Profile = () => {
                             sx={{
                                 backgroundColor: '#F3EFFF',
                                 borderRadius: '12px',
-                                minWidth: '40px',
+                                minWidth: '12px',
                                 padding: '8px',
-                                paddingRight:'initial',
                                 marginRight: '16px',
                             }}
                         >
@@ -121,9 +125,8 @@ const Profile = () => {
                             sx={{
                                 backgroundColor: '#FFEDED',
                                 borderRadius: '12px',
-                                minWidth: '40px',
+                                minWidth: '12px',
                                 padding: '8px',
-                                paddingRight:'initial',
                                 marginRight: '16px',
                             }}
                         >
