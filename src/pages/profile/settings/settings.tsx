@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './settings.css';
 import { Box, List,Container, ListItem, ListItemText, IconButton, Typography, Radio } from '@mui/material';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';

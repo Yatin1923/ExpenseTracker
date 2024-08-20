@@ -1,0 +1,14 @@
+.MuiListItemText-multiline{
+    display: flex !important;
+    justify-content: space-between;
+}
+.MuiListItemText-primary{
+    font-weight: bold !important;
+    font-size: 16px !important;
+    color: #292B2D !important;
+}
+.MuiListItemText-secondary{
+    
+    font-size: 14px !important;
+    color: #91919F !important;
+}
