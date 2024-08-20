@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Box, List, ListItem, ListItemText, IconButton, Typography, Radio } from '@mui/material';
+import './settings.css';
+import { Box, List,Container, ListItem, ListItemText, IconButton, Typography, Radio } from '@mui/material';
 import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-
+import { ArrowBack } from "@mui/icons-material";
 const Settings = () => {
   const [view, setView] = useState<'main' | 'currency' | 'language'>('main');
   const [selectedCurrency, setSelectedCurrency] = useState('USD');
@@ -76,22 +77,69 @@ const Settings = () => {
   );
 
   return (
-    <Box sx={{ padding: '20px', height: '100vh', backgroundColor: '#fff' }}>
+    <Container sx={{ padding: '10px', height: '100vh', backgroundColor: '#fff' }}>
       {/* Header */}
-      <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+      {/* <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
         <IconButton onClick={handleBackButton}>
           <ArrowBackIcon />
         </IconButton>
         <Typography variant="h6" sx={{ marginLeft: '10px' }}>
           {view === 'main' ? 'Settings' : view === 'currency' ? 'Currency' : 'Language'}
         </Typography>
+      </Box> */}
+       <Container maxWidth="xs">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          mt: 3,
+        }}
+      >
+         <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            color: "#212325",
+            fontWeight: "bold",
+            mb: 3,
+            position: "relative",
+          }}
+        >
+        <IconButton
+          onClick={handleBackButton}
+          sx={{
+            color: "#212325",
+            fontWeight: "bold",
+            position: "absolute",
+            left: 0,
+          }}
+        >
+          <ArrowBack />
+        </IconButton>
+        <Typography
+          variant="h5"
+          component="h1"
+          sx={{
+            color: "#212325",
+            fontWeight: "bold",
+            fontSize: "20px",
+            textAlign: "center",
+            flexGrow: 1,
+          }}
+        >
+          {view === 'main' ? 'Settings' : view === 'currency' ? 'Currency' : 'Language'}
+        </Typography>
+        </Box>
       </Box>
+    </Container>
 
       {/* Content */}
       {view === 'main' && renderMainSettings()}
       {view === 'currency' && renderCurrencySettings()}
       {view === 'language' && renderLanguageSettings()}
-    </Box>
+    </Container>
   );
 };
 

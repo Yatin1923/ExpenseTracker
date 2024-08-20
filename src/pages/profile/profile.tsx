@@ -8,6 +8,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import EditIcon from '@mui/icons-material/Edit';
 import Tejas from "../../images/Tejas.jpg"; // Adjust the path as necessary
 
+
 const Profile = () => {
     const username = "Tejas Bariya";
     const navigate = useNavigate(); // Hook for navigation
